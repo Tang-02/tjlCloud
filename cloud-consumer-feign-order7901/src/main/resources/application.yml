@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 7901
 spring:
   application:
     name: cloud-consumer-openfeign-order
