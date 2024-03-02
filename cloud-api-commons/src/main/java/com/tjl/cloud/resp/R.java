@@ -1,6 +1,7 @@
 package com.tjl.cloud.resp;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serial;
@@ -16,12 +17,14 @@ public class R<T> implements Serializable {
 
     @Serial
     private final static long serialVersionUID = 1L;
-    private final Integer code;
-    private final String msg;
-    private final T data;
+    private Integer code;
+    private String msg;
+    private T data;
     private final long timestamp = System.currentTimeMillis();
 
 
+    public R(){
+    }
     public R(Integer code, String msg, T data) {
         this.code = code;
         this.msg = msg;

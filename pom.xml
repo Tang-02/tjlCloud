@@ -11,6 +11,8 @@
     <modules>
         <module>mybatis-generate</module>
         <module>cloud-provider-payment8001</module>
+        <module>cloud-consumer-order8000</module>
+        <module>cloud-api-commons</module>
     </modules>
 
 
