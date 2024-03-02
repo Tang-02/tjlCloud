@@ -54,8 +54,12 @@ public class PayController {
 
     @Value("${tjlCloud.info}")
     String info;
+
+    @Value("${server.port}")
+    String port;
     @GetMapping("/info")
     public R<String> getInfo(){
-        return R.ok(info);
+        System.out.println("收到请求 服务端口"+port);
+        return R.ok(info + " port:"+port);
     }
 }
