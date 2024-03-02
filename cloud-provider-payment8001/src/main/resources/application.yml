@@ -3,15 +3,21 @@ server:
 
 # ==========applicationName + druid-mysql8 driver===================
 spring:
-  application:
-    name: cloud-payment-service
-
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/tjl_cloud?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: root
     password: root
+  profiles:
+    active: dev  #多环境加载配置 dev / prod
+# ========================mybatis===================
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.tjl.cloud.entities
+  configuration:
+    map-underscore-to-camel-case: true
+
 # springdoc-openapi项目配置
 springdoc:
   swagger-ui:
@@ -24,9 +30,3 @@ springdoc:
     - group: 'default'
       paths-to-match: '/**'
       packages-to-scan: com.tjl.cloud
-# ========================mybatis===================
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.tjl.cloud.entities
-  configuration:
-    map-underscore-to-camel-case: true

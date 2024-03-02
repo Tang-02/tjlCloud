@@ -7,6 +7,7 @@ import com.tjl.cloud.service.PayService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +24,14 @@ public class PayController {
     @Resource
     private PayService payService;
 
+
     @GetMapping
     public R<List<Pay>> getAll(){
         return R.ok(payService.getList());
     }
     @GetMapping("/{id}")
     public R<Pay> getById(@PathVariable Integer id){
+        log.info("收到请求信息 请求的PayId:"+id);
         if (id < 0) throw new RuntimeException("id不能小于0");
         return R.ok(payService.getById(id));
     }
@@ -48,4 +51,11 @@ public class PayController {
         return R.ok( payService.update(pay));
     }
 
+
+    @Value("${tjlCloud.info}")
+    String info;
+    @GetMapping("/info")
+    public R<String> getInfo(){
+        return R.ok(info);
+    }
 }

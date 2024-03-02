@@ -1,2 +1,11 @@
 server:
   port: 8000
+spring:
+  application:
+    name: cloud-order-service
+  cloud:
+    consul:
+      host: localhost  #consul服务注册中心地址
+      port: 8500 #consul服务注册中心端口
+      discovery:
+        service-name: ${spring.application.name} #服务名

@@ -5,6 +5,7 @@ import com.tjl.cloud.entities.dto.PayDTO;
 import com.tjl.cloud.resp.R;
 import jakarta.annotation.Resource;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -14,11 +15,12 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 @RequestMapping("/order")
-@NoArgsConstructor
+@Slf4j
 public class OrderController {
 
-    //先写死
-    public static final String PAYMENT_URL = "http://localhost:8001";
+//    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "http://cloud-payment-service";
+
 
     @Resource
     RestTemplate restTemplate;
@@ -34,7 +36,9 @@ public class OrderController {
     }
     @GetMapping("/consumer/pay/get/{id}")
     public R getPayInfo(@PathVariable Integer id) {
-        return restTemplate.getForObject(PAYMENT_URL+"/pay/"+id, R.class);
+        R res = restTemplate.getForObject(PAYMENT_URL + "/pay/" + id, R.class);
+        log.info("获取支付信息结果:"+res);
+        return res;
     }
 
     @DeleteMapping("/consumer/pay/del/{id}")
