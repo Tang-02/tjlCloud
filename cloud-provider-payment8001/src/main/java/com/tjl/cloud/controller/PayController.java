@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 27701
@@ -58,7 +59,7 @@ public class PayController {
     @Value("${server.port}")
     String port;
     @GetMapping("/info")
-    public R<String> getInfo(){
+    public R<String> getInfo() throws InterruptedException {
         System.out.println("收到请求 服务端口"+port);
         return R.ok(info + " port:"+port);
     }

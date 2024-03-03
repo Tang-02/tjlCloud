@@ -39,6 +39,8 @@ public class OrderFeignController {
      */
     @GetMapping("/pay/info")
     public R getPayInfo(){
-        return payFeignApi.getInfo();
+        R<String> info = payFeignApi.getInfo();
+        System.out.println("调用payFeignApi.getInfo()："+info);
+        return info;
     }
 }
