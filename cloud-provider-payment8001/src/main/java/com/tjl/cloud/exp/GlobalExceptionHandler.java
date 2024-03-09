@@ -14,10 +14,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 public class GlobalExceptionHandler {
 
+
+    @ExceptionHandler(RequestEx.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public R<String> handleRuntimeException(RequestEx e) {
+        log.error("业务异常："+e.getMessage());
+        return R.error(e.getMessage());
+    }
+
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public R<String> handleRuntimeException(RuntimeException e) {
-        log.error("全局异常信息：", e.getMessage(),e);
+        log.error("全局异常信息："+e.getMessage());
         return R.error(e.getMessage());
     }
+
+
 }
