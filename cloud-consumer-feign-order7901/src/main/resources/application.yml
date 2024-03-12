@@ -34,7 +34,7 @@ spring:
       circuitbreaker:
         enabled: true
         group:
-          enabled: false  #没开分组永远不用分组的配置。精确优先、分组次之(开了分组)、默认最后
+          enabled: true  #没开分组永远不用分组的配置。精确优先、分组次之(开了分组)、默认最后
 
 #打印请求日志
 #logging:
@@ -91,5 +91,14 @@ resilience4j:
     instances:
       cloud-payment-service:
         baseConfig: default
+
+# ========================zipkin===================
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0 #采样率默认为0.1(0.1就是10次只能有一次被记录下来)，值越大收集越及时。
 
 
