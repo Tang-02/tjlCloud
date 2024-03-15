@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(value = "cloud-payment-service")
+
 public interface PayFeignApi {
 
     /**
@@ -52,5 +53,7 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping(value = "/pay/micrometer/{id}")
-    public String myMicrometer(@PathVariable("id") Integer id);
+    String myMicrometer(@PathVariable("id") Integer id);
+
+
 }
