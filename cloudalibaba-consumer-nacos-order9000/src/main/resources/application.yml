@@ -3,8 +3,11 @@ server:
 
 spring:
   application:
-    name: nacos-payment-consumer
+    name: nacos-order-consumer
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 #配置Nacos地址
+        server-addr: localhost:8848
+#消费者将要去访问的微服务名称(nacos微服务提供者叫什么你写什么)
+service-url:
+  nacos-user-service: http://nacos-payment-provider
