@@ -32,7 +32,8 @@ spring:
           predicates:
             - Path=/pay/gateway/filter/**
           filters:
-            - RedirectTo=302,https://www.baidu.com
+            - My=token
+#            - RedirectTo=302,https://www.baidu.com
 #            - SetPath=/pay/gateway/{url}
 #            - AddRequestHeader=tjl,123456
 #            - SetRequestHeader=tjl,hello

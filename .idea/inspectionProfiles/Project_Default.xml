@@ -67,6 +67,7 @@
       <option name="customHeaders">
         <set>
           <option value="userType" />
+          <option value="name" />
         </set>
       </option>
     </inspection_tool>
