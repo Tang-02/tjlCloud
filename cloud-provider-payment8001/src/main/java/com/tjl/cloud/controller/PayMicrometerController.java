@@ -18,4 +18,6 @@ public class PayMicrometerController
     {
         return "Hello, 欢迎到来myMicrometer inputId:  "+id+" \t    服务返回:" + IdUtil.simpleUUID();
     }
+
+
 }
